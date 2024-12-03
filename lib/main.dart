@@ -7,14 +7,16 @@ class TodoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return  MaterialApp(
         title: 'Todo List',
-        home:  TodoList()
+        home:  const TodoList()
     );
   }
 }
 
 class TodoList extends StatefulWidget {
+  const TodoList({super.key});
+
   @override
   createState() =>  TodoListState();
 }
@@ -39,7 +41,7 @@ class TodoListState extends State<TodoList> {
           return  AlertDialog(
               title:  Text('"${_todoItems[index]}"'),
               actions: <Widget>[
-                 FloatingActionButton(
+                FloatingActionButton(
                     child: const Text('Cancelar'),
                     onPressed: () => Navigator.of(context).pop()
                 ),
@@ -70,8 +72,8 @@ class TodoListState extends State<TodoList> {
 
   // Build a single todo item
   Widget _buildTodoItem(String todoText, int index) {
-    return new ListTile(
-        title: new Text(todoText),
+    return  ListTile(
+        title: Text(todoText),
         onTap: () => _promptRemoveTodoItem(index)
     );
   }
